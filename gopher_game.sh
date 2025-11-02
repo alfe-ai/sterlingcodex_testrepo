@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Gopher Hide-and-Seek (3x3 grid)
 # You move with n/s/e/w to catch the hidden gopher. Distance hint is shown each turn.
-
 set -euo pipefail
 
 GRID_SIZE=3
@@ -46,23 +45,14 @@ while true; do
   echo "Distance to gopher: $dist"
   echo -n "Move (n/s/e/w) or q to quit: "; read -r move
   case "$move" in
-    [nN]|north)
-      if (( py > 1 )); then ((py--)); else echo "Cannot move there."; fi ;;
-    [sS]|south)
-      if (( py < GRID_SIZE )); then ((py++)); else echo "Cannot move there."; fi ;;
-    [eE]|east)
-      if (( px < GRID_SIZE )); then ((px++)); else echo "Cannot move there."; fi ;;
-    [wW]|west)
-      if (( px > 1 )); then ((px--)); else echo "Cannot move there."; fi ;;
-    [qQ]|quit)
-      echo "Quitting."
-      break ;;
-    *)
-      echo "Invalid input. Use n/s/e/w or q to quit.";
-      ;;
+    [nN]|north)      if (( py > 1 )); then ((py--)); else echo "Cannot move there."; fi ;;
+    [sS]|south)      if (( py < GRID_SIZE )); then ((py++)); else echo "Cannot move there."; fi ;;
+    [eE]|east)      if (( px < GRID_SIZE )); then ((px++)); else echo "Cannot move there.";; fi ;;
+    [wW]|west)      if (( px > 1 )); then ((px--)); else echo "Cannot move there.";; fi ;;
+    [qQ]|quit)      echo "Quitting."      break ;;
+    *)      echo "Invalid input. Use n/s/e/w or q to quit.";      ;;
   esac
   ((steps++))
-
   if (( px==gx && py==gy )); then
     echo "You found the gopher in ${steps} step(s)! Well done."
     ((wins++))
@@ -77,7 +67,6 @@ while true; do
       break
     fi
   fi
-
   # Gopher random move
   case $((RANDOM % 4)) in
     0) (( gy > 1 )) && gy=$(( gy - 1 )) ;;
