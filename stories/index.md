@@ -1,2 +1,3 @@
-# Stories Index
-- Angry Anima, ls — [angry_anima_ls.md](angry_anima_ls.md)
+- # Stories Index
+- - Angry Anima, ls — [angry_anima_ls.md](angry_anima_ls.md)
+- - Dogs, A Tail-Wagging Day — [dog_story.md](dog_story.md)
